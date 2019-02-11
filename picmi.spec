@@ -5,22 +5,22 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : picmi
-Version  : 18.08.0
-Release  : 1
-URL      : https://download.kde.org/stable/applications/18.08.0/src/picmi-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/picmi-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/picmi-18.08.0.tar.xz.sig
-Summary  : No detailed summary available
+Version  : 18.12.2
+Release  : 2
+URL      : https://download.kde.org/stable/applications/18.12.2/src/picmi-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/picmi-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/picmi-18.12.2.tar.xz.sig
+Summary  : A nonogram logic game for KDE
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
-Requires: picmi-bin
-Requires: picmi-data
-Requires: picmi-license
-Requires: picmi-locales
+Requires: picmi-bin = %{version}-%{release}
+Requires: picmi-data = %{version}-%{release}
+Requires: picmi-license = %{version}-%{release}
+Requires: picmi-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
 BuildRequires : libkdegames-dev
-BuildRequires : qtbase-dev qtbase-extras mesa-dev
+BuildRequires : qtbase-dev mesa-dev
 
 %description
 PICMI
@@ -33,8 +33,8 @@ hidden picture.
 %package bin
 Summary: bin components for the picmi package.
 Group: Binaries
-Requires: picmi-data
-Requires: picmi-license
+Requires: picmi-data = %{version}-%{release}
+Requires: picmi-license = %{version}-%{release}
 
 %description bin
 bin components for the picmi package.
@@ -73,26 +73,26 @@ locales components for the picmi package.
 
 
 %prep
-%setup -q -n picmi-18.08.0
+%setup -q -n picmi-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535238386
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549910195
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535238386
+export SOURCE_DATE_EPOCH=1549910195
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/picmi
-cp COPYING %{buildroot}/usr/share/doc/picmi/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/doc/picmi/COPYING.DOC
+mkdir -p %{buildroot}/usr/share/package-licenses/picmi
+cp COPYING %{buildroot}/usr/share/package-licenses/picmi/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/picmi/COPYING.DOC
 pushd clr-build
 %make_install
 popd
@@ -177,9 +177,9 @@ popd
 /usr/share/doc/HTML/uk/picmi/index.docbook
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/picmi/COPYING
-/usr/share/doc/picmi/COPYING.DOC
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/picmi/COPYING
+/usr/share/package-licenses/picmi/COPYING.DOC
 
 %files locales -f picmi.lang
 %defattr(-,root,root,-)
