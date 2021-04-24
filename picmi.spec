@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : picmi
-Version  : 20.12.3
-Release  : 28
-URL      : https://download.kde.org/stable/release-service/20.12.3/src/picmi-20.12.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.12.3/src/picmi-20.12.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.12.3/src/picmi-20.12.3.tar.xz.sig
+Version  : 21.04.0
+Release  : 29
+URL      : https://download.kde.org/stable/release-service/21.04.0/src/picmi-21.04.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.04.0/src/picmi-21.04.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.04.0/src/picmi-21.04.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -74,15 +74,15 @@ locales components for the picmi package.
 
 
 %prep
-%setup -q -n picmi-20.12.3
-cd %{_builddir}/picmi-20.12.3
+%setup -q -n picmi-21.04.0
+cd %{_builddir}/picmi-21.04.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1618700115
+export SOURCE_DATE_EPOCH=1619243273
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -98,11 +98,11 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1618700115
+export SOURCE_DATE_EPOCH=1619243273
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/picmi
-cp %{_builddir}/picmi-20.12.3/COPYING %{buildroot}/usr/share/package-licenses/picmi/4cc77b90af91e615a64ae04893fdffa7939db84c
-cp %{_builddir}/picmi-20.12.3/COPYING.DOC %{buildroot}/usr/share/package-licenses/picmi/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/picmi-21.04.0/COPYING %{buildroot}/usr/share/package-licenses/picmi/4cc77b90af91e615a64ae04893fdffa7939db84c
+cp %{_builddir}/picmi-21.04.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/picmi/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
 pushd clr-build
 %make_install
 popd
